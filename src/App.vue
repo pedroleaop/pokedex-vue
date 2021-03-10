@@ -1,10 +1,21 @@
 <template>
-  <div id="app">
-    <div class="column is-half is-offset-one-quarter">
+  <div>
+    <div class="column is-mobile">
       <img style="backgroung color: none;" src="./assets/pokelogo.webp" alt="Pokédex"> 
       <br><input type="text"  class="input is-danger" placeholder="Buscar Pokémon pelo nome" v-model="busca">
      <button id="buttonid" class="button is-fullwidth is-success" @click="buscar">Buscar</button>
-
+ <p><button style="margin-top:1%;" class="button is-large">
+    <span class="icon is-medium">
+      <i class="fab fa-github"></i>
+    </span>
+    <a href="https://github.com/pedroleaop/" target="_blank"><span>GitHub</span></a>
+  </button> 
+  <button style="margin-top: 1%; margin-left:1%; background-color: #bbffbe;" class="button is-large">
+    <span class="icon">
+      <i class="fab fa-twitter"></i>
+    </span>
+    <a href="https://www.google.com/" target="_blank"><span>@pedroleaop</span></a></button>
+  </p>
       <div v-for="(poke,index) in filteredPokemons" :key="index">
         <pokemon :name="poke.name" :url="poke.url" :num="index+1"/>
       </div>

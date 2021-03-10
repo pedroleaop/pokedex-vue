@@ -1,13 +1,10 @@
 <template>
   <div id="pokemon">
-  <h1></h1>
-
         <div class="card">
         <div class="card-image">
             <figure class="image is-4by3">
             <img id="imgpoke" :src="currentImg" @mouseup="mudarVisao" alt="Placeholder image">
             </figure>
-            
         </div>
         <div class="card-content">
             <div class="media">
@@ -15,8 +12,8 @@
                 <figure class="image is-48x48">                </figure>
             </div>
             <div class="media-content">
-                <p class="title is-4">{{num}} - {{name | upper}}</p>
-                <p class="subtitle is-6">{{pokemon.type}}</p>
+                <p class="title is-3">{{name | upper}}</p>
+                <p class="subtitle is-5">{{pokemon.type}}</p>
             </div>
             </div>
             <div class="content">

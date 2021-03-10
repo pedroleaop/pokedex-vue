@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div class="column is-half is-offset-one-quarter">
-      <div v-for="(poke,index) in pokemons" :key="index">
+      <img style="backgroung color: none;" src="./assets/pokelogo.webp" alt="Pokédex"> 
+      <br><input type="text"  class="input is-danger" placeholder="Buscar Pokémon pelo nome" v-model="busca">
+     <button id="buttonid" class="button is-fullwidth is-success" @click="buscar">Buscar</button>
+
+      <div v-for="(poke,index) in filteredPokemons" :key="index">
         <pokemon :name="poke.name" :url="poke.url" :num="index+1"/>
       </div>
     </div>
@@ -13,16 +17,40 @@ import axios from 'axios';
 import pokemon from './components/pokemon.vue';
 export default {
   components: { pokemon },
+  computed: { /*
+    resultadoBusca: function(){
+      if(this.busca =='' || this.busca == ' '){
+        return this.pokemons;
+      }else{
+        return this.pokemons.filter(pokemon => pokemon.name == this.busca)
+      }
+    } */
+  },
   name: 'App',
   data(){
     return {
-        pokemons: []
+        pokemons: [],
+        busca:'',
+        filteredPokemons: []
     }
   },
  created: function(){
     axios.get("https://pokeapi.co/api/v2/pokemon?limit=151&offset=0").then(response => (
-      this.pokemons= response.data.results))
-}}
+      this.pokemons= response.data.results,
+      this.filteredPokemons = response.data.results));
+      
+},
+methods:{
+  buscar: function(){
+    this.filteredPokemons = this.pokemons;
+    if(this.busca == '' || this.busca == ' '){
+        this.filteredPokemons = this.pokemons;
+    }else{
+      this.filteredPokemons = this.pokemons.filter(pokemon => pokemon.name == this.busca);
+    }
+  }
+}
+}
 </script>
 
 <style>
@@ -34,4 +62,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+body {
+  background: #000 url('https://media.istockphoto.com/vectors/pixel-noise-of-analog-channel-grain-screen-seamless-background-vector-vector-id1023476960') repeat;
+  }
+
+  #buttonid {
+    margin-top: 1%;
+  }
 </style>

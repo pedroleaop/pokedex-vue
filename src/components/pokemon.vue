@@ -5,7 +5,7 @@
         <div class="card">
         <div class="card-image">
             <figure class="image is-4by3">
-            <img :src="currentImg" @mouseup="mudarVisao" alt="Placeholder image">
+            <img id="imgpoke" :src="currentImg" @mouseup="mudarVisao" alt="Placeholder image">
             </figure>
             
         </div>
@@ -79,7 +79,7 @@ export default {
 
 <style>
 
-img {
+#imgpoke {
     background-color: rgb(223, 223, 223);
     image-rendering: -moz-crisp-edges;
 image-rendering: -webkit-crisp-edges;
